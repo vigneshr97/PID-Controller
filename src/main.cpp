@@ -38,16 +38,6 @@ int main()
   PID pid;
   bool twiddle = false;
   double p[3];
-  double dp[3] = {0.01,0.00002,0.3};
-  double total_cte = 0;
-  double tol = 0.2;
-  int n = 0;
-  int max_n = 1000;
-  double error = 32000;
-  double best_err = 32000;
-  double best_p[3] = {p[0], p[1], p[2]};
-  int param_iter = 0;
-  int iter = 0;
   if (twiddle == true)
   {
     p[0] = 0.05;
@@ -59,17 +49,19 @@ int main()
     // p[0] = 0.2;
     // p[1] = 0.004;
     // p[2] = 3.0;
-    p[0] = 0.13;
-    p[1] = 0.0003;
-    p[2] = 3;
+    // p[0] = 0.13;
+    // p[1] = 0.0003;
+    // p[2] = 3;
+    p[0] = 0.12;
+    p[1] = 0.0002;
+    p[2] = 6;
   }
   pid.Init(p[0], p[1], p[2]);
   /**
    * TODO: Initialize the pid variable.
    */
 
-  h.onMessage([&pid, &p, &dp, &total_cte, &twiddle, &tol, &n, &max_n, &error, &best_err, &best_p, &param_iter, &iter]
-    (uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) 
+  h.onMessage([&pid, &p] (uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) 
   {
     // "42" at the start of the message means there's a websocket message event.
     // The 4 signifies a websocket message
@@ -133,12 +125,6 @@ int main()
           // {
           //   pid.UpdateError(cte);
           //   steer_value = pid.TotalError();
-          //   std::cout << "CTE: " << cte << " Steering Value: " << steer_value << std::endl;
-          //   msgJson["steering_angle"] = steer_value;
-          //   msgJson["throttle"] = throttle_val;
-          //   auto msg = "42[\"steer\"," + msgJson.dump() + "]";
-          //   std::cout << msg << std::endl;
-          //   ws.send(msg.data(), msg.length(), uWS::OpCode::TEXT);
           // }
           // DEBUG
           std::cout << "CTE: " << cte << " Steering Value: " << steer_value 

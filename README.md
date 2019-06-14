@@ -3,6 +3,10 @@ Self-Driving Car Engineer Nanodegree Program
 
 ---
 
+The PID controller of a car in a simulator is programmed in this project. The p value steers the car to decrease the cross track error, the i value reduces the sum of cross track errors and d value reduces the difference between consecutive cross track errors. So, the p value tries bringing the car to the intended position; the d-value tries to minimize the oscillation that would occur due to moving towards the intended positon and the i value decreases a few constant errors that would happen in the car. So, the steer value is calculated as the negative of the sum of product of each coefficient and the respective error values. steer_value = -(Kp x (cte) + Ki x (sum of cte) + Kd x (cte - prev_cte)).
+
+Manual tuning and twiddle were used to obtain the most optimal values of Kp, Ki and Kd which were 0.12, 0.0002 and 6 respectively. The throttle value was fixed at 0.3 because of these values being sufficient to run the car around the track. 
+
 ## Dependencies
 
 * cmake >= 3.5
