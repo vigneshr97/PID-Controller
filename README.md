@@ -3,6 +3,8 @@ Self-Driving Car Engineer Nanodegree Program
 
 ---
 
+The PID controller of a car in a simulator is programmed in this project. 
+
 ## Dependencies
 
 * cmake >= 3.5
